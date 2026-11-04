@@ -1,0 +1,396 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TBBT / YsxLite A9 mini cameras: video in Home Assistant &middot; README</title>
+<style>:root{--bg:#0d1117;--panel:#161b22;--panel2:#21262d;--ink:#e6edf3;--dim:#8b949e;--line:#30363d;--link:#58a6ff;--acc:#d29922;--green:#3fb950;--red:#f85149;--purple:#bc8cff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1012px;margin:0 auto;padding:0 24px}
+header.gh{background:#010409;border-bottom:1px solid var(--line);padding:14px 0}
+header.gh .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px}
+.repo{color:var(--link);font-size:18px}
+.repo b{color:var(--ink)}
+.pill{border:1px solid var(--line);border-radius:2em;padding:2px 9px;font-size:12px;color:var(--dim)}
+.tabs{display:flex;gap:6px;margin-top:12px;border-bottom:1px solid var(--line)}
+.tabs a{padding:7px 14px;font-size:14px;color:var(--ink);border:1px solid transparent;border-radius:6px 6px 0 0}
+.tabs a.on{border-color:var(--line);border-bottom-color:var(--bg);background:var(--bg);font-weight:600}
+.tabs a .n{background:var(--panel2);border-radius:2em;padding:1px 7px;font-size:12px;color:var(--dim);margin-left:6px}
+.filebar{display:flex;align-items:center;gap:10px;padding:14px 0 10px;color:var(--dim);font:13px ui-monospace,SFMono-Regular,Consolas,monospace}
+.filebar b{color:var(--ink);font-weight:600}
+.readme{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:32px 40px}
+h1{font:600 30px/1.25 -apple-system,"Segoe UI",Roboto,sans-serif;margin:0 0 12px;border-bottom:1px solid var(--line);padding-bottom:10px}
+h2{font:600 21px/1.3 -apple-system,"Segoe UI",Roboto,sans-serif;margin:34px 0 12px;border-bottom:1px solid var(--line);padding-bottom:7px}
+h3{font:600 16.5px/1.3 -apple-system,"Segoe UI",Roboto,sans-serif;margin:24px 0 8px}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 16px;padding-left:26px}li{margin:5px 0}
+strong{color:#fff}
+code{background:#1f242c;border-radius:4px;padding:.15em .35em;font:85% ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:#0d1117;border:1px solid var(--line);border-radius:6px;padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;padding:0;font-size:13px;line-height:1.55}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.badges span{font:12px ui-monospace,monospace;border:1px solid var(--line);border-radius:4px;padding:3px 8px;color:var(--dim);background:var(--panel2)}
+.badges b{color:#e6edf3;font-weight:600}
+.callout{border-left:3px solid var(--line);background:var(--panel2);border-radius:0 6px 6px 0;padding:12px 16px;margin:0 0 16px}
+.callout.note{border-color:#1f6feb}.callout.warn{border-color:var(--acc)}
+.callout p:last-child{margin:0}
+.callout .lbl{display:block;font:600 13px -apple-system,sans-serif;color:var(--link);margin-bottom:4px}
+.callout.warn .lbl{color:var(--acc)}
+table{border-collapse:collapse;width:100%;margin:0 0 16px;font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 12px;text-align:left;vertical-align:top}
+th{background:var(--panel2);font-weight:600}
+tr:nth-child(2n) td{background:#11161d}
+details{border:1px solid var(--line);border-radius:6px;margin:0 0 16px;background:#11161d}
+summary{cursor:pointer;padding:10px 14px;font:600 14px -apple-system,sans-serif}
+summary::marker{color:var(--dim)}
+details[open] summary{border-bottom:1px solid var(--line)}
+details .inner{padding:14px 16px 2px}
+.ok{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.path{font:13px ui-monospace,monospace;color:var(--purple)}
+ol.steps{counter-reset:s;list-style:none;padding-left:0}
+ol.steps>li{counter-increment:s;position:relative;padding-left:38px;margin:0 0 18px}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:#1f6feb;color:#fff;font:600 13px/26px -apple-system,sans-serif;text-align:center}
+ol.steps>li b.t{display:block;font-size:15px;margin-bottom:2px}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:12.5px;padding:16px 0 44px;text-align:center;margin-top:28px}
+@media(max-width:760px){.readme{padding:22px 18px}h1{font-size:24px}}</style></head><body>
+<header class="gh"><div class="wrap">
+<span class="repo">meepedia / <b>tbbt-pppp-camera-video</b></span>
+<span class="pill">Public</span>
+<span class="pill">uses devbis/pppp_camera</span>
+<a href="https://github.com/" style="margin-left:auto;font-size:13px" id="repo-link">on GitHub</a>
+</div>
+<div class="wrap"><div class="tabs"><a class="on">Code</a><a>Issues <span class="n">3</span></a><a>Pull requests <span class="n">1</span></a><a>Actions</a><a>Wiki</a></div></div>
+</header>
+<div class="wrap"><div class="filebar"><b>README.md</b><span>&middot;</span><span>protocol notes, patch and reproduction walkthrough</span></div>
+<div class="readme">
+<h1>TBBT / YsxLite A9 mini cameras: getting live video into Home Assistant</h1>
+<div class="badges">
+<span>device <b>TBBT-665567-AMFSR</b></span>
+<span>also sold as <b>YsxLite A9 mini camera</b></span>
+<span>firmware <b>mcuver 61.2.22.3</b></span>
+<span>protocol <b>PPPP over UDP/32108</b></span>
+<span>video <b>MJPEG 240&times;320</b></span>
+<span>integration <b>pppp_camera 1.1.2</b></span>
+<span>library <b>aiopppp 0.2.2 &mdash; patched</b></span>
+<span>status <b class="ok">solved</b></span>
+</div>
+
+<div class="callout note"><span class="lbl">NOTE &mdash; what this document is for</span>
+<p>This is a solved reverse-engineering case, written so somebody with the same camera can hand the page to an AI agent and have it reproduce the fix. Every command, packet id and output below came from a real session. Where a step has an expected output, the output is quoted; where a wrong turn looks like the right answer, it is listed under <em>Traps</em>.</p></div>
+
+<div class="callout warn"><span class="lbl">WARNING &mdash; "A9" is not one camera</span>
+<p>The A9 mini camera name covers at least two unrelated stacks. <strong>This page is the PPPP variant</strong>: UDP/32108, binary command ids, a login that returns a session ticket. The other common variant runs in AP mode on <code>192.168.4.x</code> with unencrypted two-byte commands to ports 8070/8080 &mdash; a completely different protocol, documented in <code>DEEFRAG/A9</code>. If your capture shows <code>19 xx</code>-style two-byte commands and no DRW framing, you are on that one and nothing here will fit.</p></div>
+
+<h2>TL;DR</h2>
+<p>Cheap PPPP battery cameras login, answer status, switch their lamps and hand out a session ticket to a client using <code>aiopppp</code> &mdash; then never start video. Three things were wrong in the client, not the camera:</p>
+<table>
+<tr><th>#</th><th>Delta</th><th>Wrong</th><th>Right</th></tr>
+<tr><td>1</td><td>Framing bytes</td><td><code>BinaryCmdPkt.START_CMD = b'\x11\x0a'</code></td><td><code>b'\x01\x0a'</code></td></tr>
+<tr><td>2</td><td>Login payload encoding</td><td>xq-encoded, the library default for every command</td><td>plain text, never encoded</td></tr>
+<tr><td>3</td><td>Login ACK decoding</td><td>xq-decoded 4-byte ticket</td><td>raw <code>ff 00 00 00</code> + 4-byte ticket</td></tr>
+</table>
+<p>With all three the camera ACKs <code>0x3010</code> LiveVideoStart with <code>0x3110</code> and streams JPEG frames. With any one missing it stays silent &mdash; and still ACKs <code>0x3018</code> VideoParamSet, which is what makes the failure confusing.</p>
+
+<h2>Affected devices and environment</h2>
+<table>
+<tr><th>Camera</th><td>TBBT-665567-AMFSR and TBBT-681302-FNECR &mdash; two units, same firmware, same behaviour</td></tr>
+<tr><th>Also known as</th><td>"A9 mini camera" &mdash; the same hardware is rebadged under many names, and the vendor app is <strong>YsxLite</strong> (iOS and Android). Check the firmware variant before assuming this page applies: see the note below.</td></tr>
+<tr><th>Firmware</th><td><code>mcuver 61.2.22.3</code>, PPPP device id prefixed <code>TBBT</code></td></tr>
+<tr><th>Auth</th><td><code>admin</code> + an 8-character password generated at pairing. <strong>Not</strong> <code>6666</code>.</td></tr>
+<tr><th>Transport</th><td>UDP/32108, PPPP "DRW" framing, P2P punch packets to wake the camera</td></tr>
+<tr><th>Video</th><td>MJPEG &mdash; JPEG <code>ff d8 &hellip; ff d9</code> chunks in DRW video packets, 240&times;320</td></tr>
+<tr><th>Home Assistant</th><td>2026.10.4 in Docker, <code>network_mode: host</code>, config at <code>~/homeassistant/config</code></td></tr>
+<tr><th>Integration</th><td><code>devbis/pppp_camera</code> 1.1.2 (HACS custom repository); requires <code>aiopppp==0.2.2</code> and <code>ffmpeg</code></td></tr>
+<tr><th>Reference host</th><td>meepBox &mdash; an always-on i5 Linux box, no GPU, <code>10.0.0.111</code>, Home Assistant UI on <code>:8123</code></td></tr>
+<tr><th>Topology</th><td>One flat <code>10.0.0.0/24</code>: cameras <code>10.0.0.238</code> and <code>10.0.0.25</code>, iPhone running the vendor app <code>10.0.0.185</code>, router <code>10.0.0.1</code>. Phone and cameras are both Wi-Fi clients, bridged inside the router.</td></tr>
+</table>
+
+<h2>Symptoms</h2>
+<ul>
+<li>The camera entry loads. White lamp, IR lamp and reboot all work. Entity state reads <code>streaming</code>.</li>
+<li>No image, ever. The log repeats:</li>
+</ul>
+<pre><code>WARNING (MainThread) [custom_components.pppp_camera] Error getting video frame: Not connected to the camera</code></pre>
+<ul>
+<li>On the wire: <code>0x3018</code> VideoParamSet is answered with <code>0x3118</code>. <code>0x3010</code> LiveVideoStart is answered with <span class="no">nothing</span> &mdash; no <code>0x3110</code>, no frames. Hand-rolled raw packets and the Go <code>cam-reverse</code> implementation fail identically, so this is not a Home Assistant problem.</li>
+</ul>
+
+<h2>Root cause</h2>
+<p>The camera issues a session ticket to a login it never parsed. Everything that does not need media keeps working &mdash; status reads, lamp commands, PTZ &mdash; because those are answered without checking that the session is really authenticated. Media does check, so it is ignored silently.</p>
+
+<h3>1. Binary commands use start bytes <code>01 0A</code></h3>
+<p>The vendor app sends <code>01 0A</code> where <code>aiopppp</code> sends <code>11 0A</code>, and the camera mirrors whatever it receives, so the receive path must accept both or ACKs are dropped.</p>
+<pre><code>class BinaryCmdPkt(DrwPkt):
+    START_CMD = b&#x27;\x01\x0a&#x27;                       # was b&#x27;\x11\x0a&#x27;
+
+# packets.py, receive path
+elif data[4:6] in (b&#x27;\x11\x0a&#x27;, b&#x27;\x01\x0a&#x27;):  # accept both</code></pre>
+
+<h3>2. The login payload is plain text</h3>
+<p><code>aiopppp</code> xq-encodes every payload (each byte &plusmn;1 by parity, then rotate by 4). The camera does not decode the login, so encoded credentials arrive as noise &mdash; and it returns a ticket anyway, so every log line looks like a successful login.</p>
+<pre><code>if self.cmd_payload:
+    if getattr(self.command, &#x27;value&#x27;, None) == 0x1020:   # CMD_SYSTEM_USER_CHK
+        data += self.cmd_payload                          # plain text: no xq
+    else:
+        data += xq_bytes_encode(self.cmd_payload, 4)</code></pre>
+
+<h3>3. The login ACK is not xq-encoded either</h3>
+<p>The ACK body is <code>ff 00 00 00</code> followed by the 4-byte session ticket. Decoding it yields a garbage ticket, so every later command carries credentials the camera does not recognise.</p>
+<pre><code># packets.py, receive path
+if len(cmd_bin_payload) and command_num != 0x1120:       # ACK_SYSTEM_USER_CHK
+    cmd_bin_payload = xq_bytes_decode(cmd_bin_payload, 4)
+
+# session.py, login()
+if len(auth_result) == 8 and auth_result[:4] == b&#x27;\xff\x00\x00\x00&#x27;:
+    self.ticket = auth_result[4:8]                       # success
+elif auth_result != b&#x27;&#x27;:
+    raise AuthError(f&#x27;Login failed: [{auth_result.hex(&quot; &quot;)}]&#x27;)</code></pre>
+
+<h2>The patch</h2>
+<p>All six hunks live in one idempotent script. It matches exact source anchors, never applies a hunk twice, and exits non-zero if a future <code>aiopppp</code> release moves an anchor &mdash; so a build fails loudly instead of shipping a broken camera.</p>
+<details><summary><span class="path">patch_aiopppp_tbbt.py</span> &mdash; apply inside the Home Assistant image</summary>
+<div class="inner"><pre><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Patch aiopppp for TBBT/SmartCam PPPP battery cameras (firmware mcuver 61.2.22.3).
+
+Applied inside the Home Assistant image so the fixes survive container rebuilds.
+
+Discovered by packet-capturing the vendor iPhone app:
+  * binary commands use start bytes 0x010A, not 0x110A
+  * the login (CMD_SYSTEM_USER_CHK 0x1020) carries PLAIN &#x27;admin&#x27;+password, not xq-encoded
+  * the login ack is &#x27;ff 00 00 00&#x27; + 4-byte session ticket, sent unencoded
+  * without all of the above the camera acks VideoParamSet but silently ignores
+    LiveVideoStart -&gt; no video. With them, video streams as MJPEG.
+&quot;&quot;&quot;
+import sys
+
+SP = &quot;/usr/local/lib/python3.14/site-packages/aiopppp/session.py&quot;
+PP = &quot;/usr/local/lib/python3.14/site-packages/aiopppp/packets.py&quot;
+MARK = &quot;TBBT&quot;
+
+session_subs = [
+    (&quot;&quot;&quot;            if drw_pkt.command == BinaryCommands.ACK_SYSTEM_USER_CHK and len(drw_pkt.cmd_payload) &gt;= 20:
+                # this is from cam-reverse code
+                self.ticket = drw_pkt.cmd_payload[16:20]&quot;&quot;&quot;,
+     &quot;&quot;&quot;            if drw_pkt.command == BinaryCommands.ACK_SYSTEM_USER_CHK:
+                _p = drw_pkt.cmd_payload
+                if len(_p) &gt;= 20:
+                    # this is from cam-reverse code
+                    self.ticket = _p[16:20]
+                elif len(_p) == 8 and _p[:4] == b&#x27;\\xff\\x00\\x00\\x00&#x27;:
+                    # TBBT firmware: marker + 4-byte session ticket
+                    self.ticket = _p[4:8]&quot;&quot;&quot;),
+    (&quot;&quot;&quot;        if auth_result != b&#x27;&#x27;:
+            raise AuthError(f&#x27;Login failed: [{auth_result.hex(&quot; &quot;)}]&#x27;)
+        return True&quot;&quot;&quot;,
+     &quot;&quot;&quot;        if auth_result != b&#x27;&#x27;:
+            if len(auth_result) == 8 and auth_result[:4] == b&#x27;\\xff\\x00\\x00\\x00&#x27;:
+                # TBBT firmware: ff 00 00 00 + 4-byte ticket == success
+                self.ticket = auth_result[4:8]
+                logger.info(&#x27;Login ok (TBBT variant), ticket=%s&#x27;, self.ticket.hex())
+            else:
+                raise AuthError(f&#x27;Login failed: [{auth_result.hex(&quot; &quot;)}]&#x27;)
+        return True&quot;&quot;&quot;),
+]
+
+packet_subs = [
+    (&quot;&quot;&quot;class BinaryCmdPkt(DrwPkt):
+    START_CMD = b&#x27;\\x11\\x0a&#x27;&quot;&quot;&quot;,
+     &quot;&quot;&quot;class BinaryCmdPkt(DrwPkt):
+    START_CMD = b&#x27;\\x01\\x0a&#x27;  # TBBT&quot;&quot;&quot;),
+    (&quot;&quot;&quot;        if self.cmd_payload:
+            data += xq_bytes_encode(self.cmd_payload, 4)
+        return data&quot;&quot;&quot;,
+     &quot;&quot;&quot;        if self.cmd_payload:
+            if getattr(self.command, &#x27;value&#x27;, None) == 0x1020:
+                # TBBT: credentials are plain text, not xq-encoded
+                data += self.cmd_payload
+            else:
+                data += xq_bytes_encode(self.cmd_payload, 4)
+        return data&quot;&quot;&quot;),
+    (&quot;&quot;&quot;    elif data[4:6] == b&#x27;\\x11\\x0a&#x27;:&quot;&quot;&quot;,
+     &quot;&quot;&quot;    elif data[4:6] in (b&#x27;\\x11\\x0a&#x27;, b&#x27;\\x01\\x0a&#x27;):  # TBBT&quot;&quot;&quot;),
+    (&quot;&quot;&quot;                if len(cmd_bin_payload):
+                    cmd_bin_payload = xq_bytes_decode(cmd_bin_payload, 4)&quot;&quot;&quot;,
+     &quot;&quot;&quot;                if len(cmd_bin_payload) and command_num != 0x1120:
+                    # TBBT: login ack (0x1120) is not xq-encoded
+                    cmd_bin_payload = xq_bytes_decode(cmd_bin_payload, 4)&quot;&quot;&quot;),
+]
+
+
+def apply(path, subs):
+    src = open(path).read()
+    changed = 0
+    for old, new in subs:
+        if new in src:
+            continue  # already patched
+        if old not in src:
+            print(f&quot;ANCHOR MISS in {path}:\n{old[:100]}&quot;)
+            sys.exit(1)
+        src = src.replace(old, new, 1)
+        changed += 1
+    if changed:
+        open(path, &quot;w&quot;).write(src)
+    print(f&quot;{path}: {changed} hunk(s) applied&quot;)
+
+
+apply(SP, session_subs)
+apply(PP, packet_subs)
+print(&quot;aiopppp patched for TBBT cameras&quot;)</code></pre></div></details>
+<p><code>aiopppp</code> is not part of the Home Assistant image &mdash; the custom integration pip-installs it at first start &mdash; so patching a running container is lost on the next image pull. Bake it in:</p>
+<details><summary><span class="path">Dockerfile</span> &mdash; builds <code>homeassistant-tbbt:local</code></summary>
+<div class="inner"><pre><code>FROM homeassistant/home-assistant:stable
+
+# TBBT PPPP battery cams (TBBT-665567-AMFSR / TBBT-681302-FNECR) need aiopppp patched:
+# 010A start bytes, plain-text login, unencoded &#x27;ff 00 00 00 &lt;ticket&gt;&#x27; login ack.
+# Without it the camera acks VideoParamSet but never starts video (no MJPEG stream).
+# aiopppp is normally installed at first start by the pppp_camera custom component,
+# so install it here and patch it in the image instead.
+RUN pip3 install --no-cache-dir aiopppp==0.2.2
+
+COPY patch_aiopppp_tbbt.py /tmp/patch_aiopppp_tbbt.py
+RUN python3 /tmp/patch_aiopppp_tbbt.py &amp;&amp; rm /tmp/patch_aiopppp_tbbt.py</code></pre></div></details>
+<pre><code># docker-compose.yml
+services:
+  homeassistant:
+    build: .
+    image: homeassistant-tbbt:local
+    container_name: homeassistant
+    restart: unless-stopped
+    network_mode: host</code></pre>
+
+<h2>Verify</h2>
+<p>Check bytes, not entity state. <code>streaming</code> only means Home Assistant is willing to ask; a JPEG magic number means the camera answered.</p>
+<pre><code>docker exec homeassistant python3 /tmp/ha_save_snaps.py
+# camera.tbbt_665567_amfsr: http=200 bytes=11488 jpeg=True
+# camera.tbbt_681302_fnecr: http=200 bytes=10780 jpeg=True
+
+$ file /tmp/ha_238.jpg
+/tmp/ha_238.jpg: JPEG image data, baseline, precision 8, 240x320, components 3</code></pre>
+<p>Outside Home Assistant, this harness connects, starts video and writes the first frame. It is the shortest path from "patched" to "proven".</p>
+<details><summary><span class="path">harness_frame_test.py</span> &mdash; standalone; prints frame size and magic bytes</summary>
+<div class="inner"><pre><code>import asyncio, logging, sys, struct
+sys.path.insert(0, &#x27;/tmp&#x27;)
+logging.basicConfig(level=logging.ERROR, stream=sys.stdout)
+from aiopppp import Device
+from aiopppp.encrypt import ENC_METHODS
+
+IP = sys.argv[1]
+PWD = sys.argv[2]
+OUT = sys.argv[3] if len(sys.argv) &gt; 3 else &#x27;/tmp/ha_frame.jpg&#x27;
+
+
+def drw(idx, start, cmd, dest, token, payload=b&#x27;&#x27;):
+    body = (b&#x27;\xd1\x00&#x27; + struct.pack(&#x27;&gt;H&#x27;, idx) + start
+            + struct.pack(&#x27;&lt;H&#x27;, cmd) + struct.pack(&#x27;&lt;H&#x27;, len(payload) + len(token))
+            + struct.pack(&#x27;&lt;H&#x27;, dest) + token + payload)
+    return b&#x27;\xf1\xd0&#x27; + struct.pack(&#x27;&gt;H&#x27;, len(body)) + body
+
+
+async def main():
+    dev = Device(IP, &quot;admin&quot;, PWD)
+    await dev.connect(timeout=30)
+    sess = dev.session
+    enc = ENC_METHODS[sess.dev.encryption][1]
+
+    def send_raw(cmd, dest, payload=b&#x27;&#x27;):
+        idx = sess.outgoing_command_idx
+        sess.outgoing_command_idx += 1
+        sess.transport.sendto(enc(drw(idx, b&#x27;\x01\x0a&#x27;, cmd, dest, sess.ticket, payload)),
+                              (sess.dev.addr, sess.dev.port))
+
+    send_raw(0x1008, 0x00ff)
+    await asyncio.sleep(0.3)
+    for _ in range(6):
+        send_raw(0x3018, 0x00ff, bytes.fromhex(&quot;0100000000000000&quot;))
+        send_raw(0x3010, 0x0000)
+        send_raw(0x3018, 0x00ff, bytes.fromhex(&quot;0700000020000000&quot;))
+    print(&quot;ticket:&quot;, sess.ticket.hex())
+
+    got = None
+    for attempt in range(12):
+        try:
+            fr = await asyncio.wait_for(dev.get_video_frame(), timeout=8)
+        except Exception as e:
+            print(&quot;frame attempt&quot;, attempt, &quot;-&gt;&quot;, type(e).__name__)
+            continue
+        data = fr.data if hasattr(fr, &#x27;data&#x27;) else bytes(fr)
+        print(&quot;frame:&quot;, len(data), &quot;bytes, magic:&quot;, data[:4].hex(&#x27; &#x27;))
+        if data[:2] == b&#x27;\xff\xd8&#x27;:
+            got = data
+            break
+        if b&#x27;\xff\xd8&#x27; in data:
+            got = data[data.index(b&#x27;\xff\xd8&#x27;):]
+            break
+    if got:
+        open(OUT, &#x27;wb&#x27;).write(got)
+        print(&quot;saved&quot;, OUT, len(got))
+    else:
+        print(&quot;NO JPEG FRAME&quot;)
+    try:
+        await dev.close()
+    except Exception:
+        pass
+
+
+asyncio.run(main())</code></pre></div></details>
+
+<h2>Reproduction walkthrough</h2>
+<p>For another owner of this camera, or an agent working on their behalf. Each step states what success looks like; if you do not get it, the note says where to look instead.</p>
+<ol class="steps">
+<li><b class="t">Recover the camera's real password</b>
+<p>Pairing generates an 8-character password and the app holds it. If the app cannot show it, read it from a login capture: the <code>0x1020</code> payload is 160 bytes, ASCII username at offset 0, ASCII password at offset 32. Do not settle for <code>6666</code> &mdash; see Traps.</p></li>
+
+<li><b class="t">Install Home Assistant and the integration</b>
+<p>HACS custom repository <code>devbis/pppp_camera</code>, then add the camera through the config flow using <code>admin</code> plus the real password. <span class="ok">Pass:</span> the entry loads and the lamp switches operate. That proves the session reaches the camera; everything after is purely about media.</p></li>
+
+<li><b class="t">Put a capture point in the network path</b>
+<p>Any wired Linux host on the same subnet. Allow forwarding for the phone&harr;camera pair <em>first</em> &mdash; the step everyone skips &mdash; then ARP-poison the camera side and capture. Poisoning only the camera is enough to see the camera's replies; poison the phone as well only if you need the app's own commands.</p>
+<pre><code>iptables -I FORWARD 1 -s 10.0.0.185 -d 10.0.0.238 -j ACCEPT
+iptables -I FORWARD 1 -s 10.0.0.238 -d 10.0.0.185 -j ACCEPT
+python3 arp_poison.py 900 10.0.0.238 CAM_MAC 10.0.0.1 10.0.0.238 CAM_MAC 10.0.0.185
+tcpdump -i eth0 -n -s0 -w /tmp/cam.pcap &quot;host 10.0.0.238&quot;</code></pre></li>
+
+<li><b class="t">Stream from the vendor app and read the capture</b>
+<p>Look for <code>0x1020</code> login, the video burst (<code>0x3018</code> and <code>0x3010</code> within a few milliseconds), and the camera's <code>0x3110</code> reply. <span class="no">Fail:</span> <code>0x3118</code> present and <code>0x3110</code> absent means you have this exact bug. Diff the app's start bytes against your client's &mdash; that difference is delta 1.</p></li>
+
+<li><b class="t">Patch, do not rewrite</b>
+<p>Apply the three deltas to <code>aiopppp</code>, inside the image. Reimplementing the protocol from scratch is a longer road to the same three findings.</p></li>
+
+<li><b class="t">Prove it with JPEG magic bytes</b>
+<p>Run the harness, or fetch <code>/api/camera_proxy/camera.your_entity</code> and check the body begins <code>ff d8</code>. A dark 240&times;320 frame of a back yard is success.</p></li>
+</ol>
+
+<h2>Traps that look like answers</h2>
+<div class="callout warn"><span class="lbl">WARNING</span>
+<p>Every item below produced a confident wrong answer during this session. They are listed in the order they cost time.</p></div>
+<ul>
+<li><strong>Docker's <code>FORWARD DROP</code> policy.</strong> With the MITM in the path and no <code>ACCEPT</code> rules, the camera's replies are blackholed. The app's stream stalls, it reconnects through the vendor cloud relay, and the capture shows no LAN traffic at all &mdash; which reads exactly like "this camera cannot be reached locally". Add the forwarding rules before poisoning.</li>
+<li><strong>The default password <code>6666</code>.</strong> It logs in, reads status, issues a ticket and works the lamps &mdash; and never streams. About 90% working, which is the worst possible amount.</li>
+<li><strong>One <code>0x3110</code> ACK right after a previous stream.</strong> The encoder is still warm from the vendor app's session. It ACKs once and sends nothing. False positive, not a fix.</li>
+<li><strong>MAC flooding.</strong> <code>macof</code> with 42,000 bogus MACs produced an empty capture: two Wi-Fi clients of the same AP are bridged inside the router and never touch the wired switch.</li>
+<li><strong>Poisoning the phone.</strong> iOS re-asserts its own ARP entry, so the app's packets arrive intermittently. Poison the camera, which does not defend its cache.</li>
+<li><strong>Patching the container.</strong> The next image pull removes it. Patch the image.</li>
+</ul>
+
+<h2>Appendix: the app's command sequence</h2>
+<pre><code>0x1020  login        token 00000000, payload 32s &quot;admin&quot; + 128s password  (PLAIN TEXT)
+0x1008  status get   token = session ticket
+0x3018  vparam       01 00 00 00 00 00 00 00    type 1 (resolution) = 0
+0x3010  live start   no payload, dest 0x0000
+0x3018  vparam       07 00 00 00 20 00 00 00    type 7 = 32
+0x3019  vparam get
+0x50ff  passthrough  JSON strings (PTZ)
+0x3011  live stop</code></pre>
+<p>ACKs come back as the request's command id plus <code>0x100</code>: <code>0x3018</code>&rarr;<code>0x3118</code>, <code>0x3010</code>&rarr;<code>0x3110</code> (264-byte payload), <code>0x1008</code>&rarr;<code>0x1108</code>. Video arrives as DRW video packets from UDP/32108 to the client's source port, JPEG chunks of roughly 1 KB. The whole video group is sent as one burst; spacing it over hundreds of milliseconds is enough to be ignored.</p>
+
+<h2>References</h2>
+<ul>
+<li><code>devbis/pppp_camera</code> &mdash; the Home Assistant integration used here (HACS custom repository).</li>
+<li><code>DEEFRAG/A9</code> &mdash; the AP-mode A9 variant; useful to rule out which stack you have.</li>
+<li><a href="https://community.home-assistant.io/t/popular-a9-mini-wi-fi-camera-the-ha-challenge/230108">Popular A9 mini Wi-Fi camera &amp; the HA challenge</a> &mdash; the long-running Home Assistant community thread on this exact camera family and PPPP/32108.</li>
+<li><a href="https://palant.info/2025/11/05/an-overview-of-the-pppp-protocol-for-iot-cameras/">An overview of the PPPP protocol for IoT cameras</a> &mdash; framing, discovery on UDP 32108, and the A9 lineage.</li>
+</ul>
+
+<h2>Credits and provenance</h2>
+<p>Built on <code>devbis/pppp_camera</code> and <code>aiopppp</code>; the login and ticket handling follows the <code>cam-reverse</code> lineage of PPPP work. Captures, patch and reproduction were done on meepBox (<code>10.0.0.111</code>) against two TBBT cameras on one flat home LAN. The packet captures remain on that host in case a firmware update breaks this again.</p>
+</div>
+<footer>README rendered for GitHub Pages &middot; facts as of Nov 2026 &middot; corrections welcome as issues</footer>
+</div></body></html>
